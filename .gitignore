@@ -28,8 +28,20 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
+# local env files — jamais commités : .env.example documente les clés attendues
+.env
 .env*.local
 
 # typescript
 *.tsbuildinfo
+
+# Données générées par le simulateur.
+#
+# Elles se régénèrent à l'identique depuis une graine — `python
+# scripts/build_dataset.py --seed 42` — donc les commiter reviendrait à verser
+# cinq mégaoctets dans l'historique pour une information que trois lignes de code
+# portent déjà. Le modèle exporté, lui, EST commité (`src/ml/`) : l'application
+# l'embarque, elle doit pouvoir démarrer sans exécuter Python.
+analytics/data/
+__pycache__/
+*.pyc
